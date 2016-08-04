@@ -1,4 +1,4 @@
-# posthtml-rename-id plugin
+# posthtml-rename-id plugin [![Build Status](https://travis-ci.org/kisenka/posthtml-rename-id.svg?branch=master)](https://travis-ci.org/kisenka/posthtml-rename-id) [![Coverage Status](https://coveralls.io/repos/github/kisenka/posthtml-rename-id/badge.svg?branch=master)](https://coveralls.io/github/kisenka/posthtml-rename-id?branch=master)
 
 [PostHTML](https://github.com/posthtml/posthtml) plugin to rename id attributes and it's references.
 
