@@ -1,6 +1,7 @@
-# posthtml-rename-id plugin [![Build Status](https://travis-ci.org/kisenka/posthtml-rename-id.svg?branch=master)](https://travis-ci.org/kisenka/posthtml-rename-id) [![Coverage Status](https://coveralls.io/repos/github/kisenka/posthtml-rename-id/badge.svg?branch=master)](https://coveralls.io/github/kisenka/posthtml-rename-id?branch=master)
+# PostHTML rename id plugin
 
-[PostHTML](https://github.com/posthtml/posthtml) plugin to rename id attributes and it's references.
+Plugin to rename id attributes and it's references. 
+Inspired by [grunt-svgstore](https://github.com/FWeinb/grunt-svgstore).
 
 Handle following cases:
 
@@ -9,7 +10,7 @@ Handle following cases:
 - `<style>` tag values like `.selector {fill: url(#id)"}`
 - any other attribute value like `attr="url(#id)"`
 
-## Installation
+## Install
 
 ```sh
 npm install posthtml-rename-id --save
@@ -18,17 +19,16 @@ npm install posthtml-rename-id --save
 ## Usage
 
 ```js
-var posthtml = require('posthtml');
-var renameId = require('posthtml-rename-id');
+const posthtml = require('posthtml');
+const rename = require('posthtml-rename-id');
 
 posthtml()
-  .use(renameId('prefix_[id]'))
+  .use(rename('prefix_[id]'))
   .process('<div id="qwe"></div> <a href="#qwe"></a>')
-  .then(function(result) {
+  .then((result) => {
     console.log(result);
   });
-
-// <div id="prefix_qwe"></div> <a href="#prefix_qwe"></a>
+  // => <div id="prefix_qwe"></div> <a href="#prefix_qwe"></a>
 ```
 
 ## Configuration
@@ -42,14 +42,14 @@ Function should return the new id as string (`[id]` can be used as well).
 Uppercase all ids:
 ```js
 posthtml([
-  renameId(function(id) { return id.toUpperCase() })
+  renameId(id => id.toUpperCase())
 ]);
 ```
 
 Rename all ids to `elem_{counter}`:
 ```js
-var c = 0;
+let c = 0;
 posthtml([
-  renameId(function(id) { c++; return 'elem_' + c; })
+  renameId((id) => { c++; return 'elem_' + c; })
 ]);
 ```
